@@ -90,13 +90,17 @@ if __name__ == "__main__":
             file_size = os.path.getsize(file_name) / 1024 / 1024
             if file_size > 200:
                 print("Enter file size less that 200 MB, current is {}".format(file_size))
+                print(False)
                 exit()
             f.close()
     except IOError:
         print ("File name does not exists - ", file_name)
+        print(False)
         exit()
     db = uniqueWordDB()
     db.create_table()
     db_populated = db.fill_table(file_name)
     if db_populated:
         print(db.search_table(word))
+    else:
+        print(False)

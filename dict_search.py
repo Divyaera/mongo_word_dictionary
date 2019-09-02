@@ -1,3 +1,11 @@
+"""
+    Creator: Divyanshu Kushwaha
+    Date: 2 August 2019
+    Parse a text file to store unique words from it to mongo database
+    Then search whether a specific word exists in the database or not
+    Returns: Boolean
+    Usage - python dict_search.py <text_file_name_to_parse> <word_to_search>
+"""
 def check_install(package_names):
     for package_name in package_names:
         try:
@@ -14,9 +22,6 @@ import pymongo
 import re
 import sys
 import os
-if sys.version_info[0] < 3:
-    print("Must be using Python 3")
-    exit()
 class FileTypeNotSupportedExeption(Exception):
     """raised when unsupported file type is passed"""
     pass
@@ -71,6 +76,9 @@ class uniqueWordDB():
             return False
 
 if __name__ == "__main__":
+    if sys.version_info[0] < 3:
+        print("Must be using Python 3")
+        exit()
     if len(sys.argv) == 3:
         file_name = sys.argv[1]
         word = sys.argv[2]
